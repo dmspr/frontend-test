@@ -48,6 +48,7 @@ function PostSection() {
         <div className="form-group">
           <input
             type="text"
+            data-testid="title-text"
             className="form-control"
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
@@ -56,28 +57,30 @@ function PostSection() {
         <div className="form-group">
           <input
             type="text"
+            data-testid="desc-text"
             className="form-control"
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Description"
           />
         </div>
-        <button className="btn btn-sm btn-primary" onClick={postData}>
+        <button className="btn btn-sm btn-primary" data-testid="post-btn" onClick={postData}>
           Post Data
         </button>
         <button
           className="btn btn-sm btn-warning ml-2"
+          data-testid="clear-btn"
           onClick={clearPostOutput}
         >
           Clear
         </button>
         <div className="alert alert-primary mt-2" role="alert">
           <span>{`Title: ${title}`}</span>
-          <br/>
+          <br />
           <span>{`Description: ${description}`}</span>
         </div>
         {postResult && (
           <>
-            <div className="alert alert-secondary mt-2" role="alert">
+            <div className="alert alert-secondary mt-2" data-testid="response-product" role="alert">
               <pre>{formatResponse(postResult)}</pre>
             </div>
             {!isError && (

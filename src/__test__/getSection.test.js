@@ -31,19 +31,21 @@ jest.mock("axios");
 const mockResponse = {
     data: [
         {
-            name: "Pisang goreng",
-            price: 500,
+            id: 3,
+            name: "Kue Kuping Gajah",
+            price: 2000,
             stock: 1,
+            imageUrl: ""
         },
     ],
 };
 
 const mockError = {
     data: null,
-    message: "Error",
+    message: "Error Test",
 };
 
-test("Reponse Product", async () => {
+test("handle reponse Product", async () => {
     await act(async () => {
         await axios.get.mockImplementationOnce(() => Promise.resolve(mockResponse));
         render(<GetSection />);
@@ -56,7 +58,7 @@ test("Reponse Product", async () => {
     expect(response).toBeInTheDocument();
 });
 
-test("error", async () => {
+test("handle error", async () => {
     await act(async () => {
         await axios.get.mockImplementationOnce(() => Promise.reject(mockError));
         render(<GetSection />);
